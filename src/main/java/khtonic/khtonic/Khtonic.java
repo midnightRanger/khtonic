@@ -1,6 +1,7 @@
 package khtonic.khtonic;
 
 import com.mojang.logging.LogUtils;
+import khtonic.khtonic.init.ItemInit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -34,14 +35,6 @@ public class Khtonic {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "khtonic";
 
-    public static class ModCreativeTab extends CreativeModeTab {
-        private ModCreativeTab(int index, String label) {
-            super(index, label);
-        }
-
-        
-    }
-
 
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -56,7 +49,7 @@ public class Khtonic {
     public static final RegistryObject<Item> EXAMPLE_BLOCK_ITEM = ITEMS.register("example_block", () -> new BlockItem(EXAMPLE_BLOCK.get(), new Item.Properties().tab(CreativeModeTab.TAB_BUILDING_BLOCKS)));
 
     public Khtonic() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -64,7 +57,7 @@ public class Khtonic {
         // Register the Deferred Register to the mod event bus so blocks get registered
         BLOCKS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so items get registered
-        ITEMS.register(modEventBus);
+        ItemInit.ITEMS.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

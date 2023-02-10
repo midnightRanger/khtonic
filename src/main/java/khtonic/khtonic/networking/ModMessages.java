@@ -1,8 +1,10 @@
 package khtonic.khtonic.networking;
 
 import khtonic.khtonic.Khtonic;
+import khtonic.khtonic.networking.packet.InsightS2CPacket;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
@@ -24,6 +26,9 @@ public class ModMessages {
                 .simpleChannel();
         INSTANCE = net;
 
+        net.messageBuilder(InsightS2CPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(InsightS2CPacket::new)
+                .
     }
 
     public static <MSG> void sendToServer(MSG message) {

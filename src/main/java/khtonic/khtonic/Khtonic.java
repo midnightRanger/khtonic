@@ -3,6 +3,7 @@ package khtonic.khtonic;
 import com.mojang.logging.LogUtils;
 import khtonic.khtonic.client.InsightHudElement;
 import khtonic.khtonic.init.ItemInit;
+import khtonic.khtonic.networking.ModMessages;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -69,6 +70,12 @@ public class Khtonic {
         // Some common setup code
         LOGGER.info("HELLO FROM COMMON SETUP");
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
+
+        event.enqueueWork(()->{
+        });
+
+        ModMessages.register();
+
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

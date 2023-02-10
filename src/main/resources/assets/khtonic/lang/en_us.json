@@ -1,5 +1,7 @@
 {
   "itemGroup.khtonic": "Khtonic items",
 
-  "item.khtonic.necronomicon": "Necronomicon"
+  "item.khtonic.necronomicon": "Necronomicon",
+
+  "message.khtonic.insight_up": "Someone was happened.."
 }

@@ -9,7 +9,7 @@ import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 
 public class InsightHudElement {
     private static final ResourceLocation INSIGHT = new ResourceLocation(Khtonic.MODID,
-            "textures/insight/insight.png");
+            "textures/insight/insight-ver2.png");
     public static final IGuiOverlay INSIGHT_HUD = ((gui, poseStack, partialTick, screenWidth, screenHeight) -> {
        int x = screenWidth/2;
        int y = screenHeight;

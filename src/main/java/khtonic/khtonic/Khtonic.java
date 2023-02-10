@@ -1,6 +1,7 @@
 package khtonic.khtonic;
 
 import com.mojang.logging.LogUtils;
+import khtonic.khtonic.client.InsightHudElement;
 import khtonic.khtonic.init.ItemInit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.BlockItem;
@@ -12,6 +13,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -86,5 +88,12 @@ public class Khtonic {
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
+
+        @SubscribeEvent
+        public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
+            event.registerAboveAll("insight", InsightHudElement.INSIGHT_HUD);
+        }
     }
+
+
 }

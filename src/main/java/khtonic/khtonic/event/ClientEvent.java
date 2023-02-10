@@ -2,11 +2,18 @@ package khtonic.khtonic.event;
 
 import khtonic.khtonic.Khtonic;
 import khtonic.khtonic.init.ItemInit;
+import khtonic.khtonic.insight.Insight;
+import khtonic.khtonic.insight.InsightProvider;
 import khtonic.khtonic.networking.ModMessages;
 import khtonic.khtonic.networking.packet.InsightS2CPacket;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;

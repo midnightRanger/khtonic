@@ -71,10 +71,12 @@ public class Khtonic {
         LOGGER.info("HELLO FROM COMMON SETUP");
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
 
+
+
         event.enqueueWork(()->{
+            ModMessages.register();
         });
 
-        ModMessages.register();
 
     }
 

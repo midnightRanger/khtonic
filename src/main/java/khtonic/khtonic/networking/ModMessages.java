@@ -28,7 +28,9 @@ public class ModMessages {
 
         net.messageBuilder(InsightS2CPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(InsightS2CPacket::new)
-                .
+                .encoder(InsightS2CPacket::toBytes)
+                .consumerMainThread(InsightS2CPacket::handle)
+                .add();
     }
 
     public static <MSG> void sendToServer(MSG message) {

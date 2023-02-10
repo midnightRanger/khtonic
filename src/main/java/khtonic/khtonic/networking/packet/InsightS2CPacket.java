@@ -26,7 +26,9 @@ public class InsightS2CPacket {
 
     }
 
-    public 
+    public void toBytes(FriendlyByteBuf buf) {
+
+    }
 
     private static final String MESSAGE_INSIGHT_UP = "message.khtonic.insight_up";
 
@@ -37,20 +39,17 @@ public class InsightS2CPacket {
                     ServerPlayer player = context.getSender();
                     ServerLevel level = player.getLevel();
 
-                    if (hasInsightEvent(player, level)) {
                         player.sendSystemMessage(Component.translatable(MESSAGE_INSIGHT_UP).withStyle(ChatFormatting.ITALIC));
                         level.playSound(null, player.getOnPos(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS,
                                 0.5f, level.random.nextFloat() * 0.1f * 0.9f);
-                    }
+
                 }
         );
         return true;
     }
 
     private boolean hasInsightEvent(ServerPlayer player, ServerLevel level) {
-
         return player.getInventory().contains(new ItemStack(ItemInit.NECRONOMICON.get(), 1));
-
     }
 
 

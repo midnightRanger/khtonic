@@ -13,10 +13,15 @@ public class InsightHudElement {
     public static final IGuiOverlay INSIGHT_HUD = ((gui, poseStack, partialTick, screenWidth, screenHeight) -> {
        int x = screenWidth/2;
        int y = screenHeight;
+        RenderSystem.setShader(GameRenderer::getPositionTexShader);
+        RenderSystem.setShaderColor(1.0F, 1.0F,1.0F, 1.0F);
+        RenderSystem.setShaderTexture(0, INSIGHT);
 
-       RenderSystem.setShader(GameRenderer::getPositionTexShader);
-       RenderSystem.setShaderColor(1.0F, 1.0F,1.0F, 1.0F);
-       RenderSystem.setShaderTexture(0, INSIGHT);
-        GuiComponent.blit(poseStack,x-94, y-54, 0,0,12,12,12,12);
-    });
+       for (int i = 0; i < ClientInsightData.getPlayerInsight()/10; i++) {
+           {
+               GuiComponent.blit(poseStack,x-94 + (i*9), y-54, 0,0,12,12,12,12);
+           }
+       }
+
+     });
 }

@@ -2,6 +2,7 @@ package khtonic.khtonic.networking.packet;
 
 import khtonic.khtonic.init.ItemInit;
 import khtonic.khtonic.insight.InsightProvider;
+import khtonic.khtonic.networking.ModMessages;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -44,9 +45,10 @@ public class InsightS2CPacket {
                         level.playSound(null, player.getOnPos(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS,
                                 0.5f, level.random.nextFloat() * 0.1f * 0.9f);
 
-                        player.getCapability(InsightProvider.PLAYER_INSIGHT).ifPresent(insight -> {
+                            player.getCapability(InsightProvider.PLAYER_INSIGHT).ifPresent(insight -> {
                             insight.addInsight(10);
                             player.sendSystemMessage(Component.literal("Current insight: " + insight.getInsight()));
+                                ModMessages.sendToPlayer(new InsightDataSyncS2CPacket(insight.getInsight()), player);
                         });
                 }
         );

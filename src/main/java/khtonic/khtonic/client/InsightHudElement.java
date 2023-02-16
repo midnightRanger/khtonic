@@ -16,12 +16,15 @@ public class InsightHudElement {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F,1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, INSIGHT);
+        int currentInsight = ClientInsightData.getPlayerInsight()/10;
 
-       for (int i = 0; i < ClientInsightData.getPlayerInsight()/10; i++) {
-           {
-               GuiComponent.blit(poseStack,x-94 + (i*9), y-54, 0,0,12,12,12,12);
-           }
-       }
+        if (currentInsight != 0) {
+            for (int i = 0; i < currentInsight; i++) {
+                {
+                    GuiComponent.blit(poseStack, x - 94 + (i * 9), y - 54, 0, 0, 12, 12, 12, 12);
+                }
+            }
+        }
 
      });
 }

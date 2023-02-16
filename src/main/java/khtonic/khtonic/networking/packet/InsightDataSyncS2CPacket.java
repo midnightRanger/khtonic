@@ -18,16 +18,16 @@ public class InsightDataSyncS2CPacket {
         this.insight = buf.readInt();
     }
 
-    public void toBytes (FriendlyByteBuf buf) {
+    public void toBytes(FriendlyByteBuf buf) {
         buf.writeInt(insight);
     }
 
     public boolean handle(Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context = supplier.get();
-        context.enqueueWork( () -> {
+        context.enqueueWork(() -> {
+            // HERE WE ARE ON THE CLIENT!
             ClientInsightData.set(insight);
         });
         return true;
     }
-
 }

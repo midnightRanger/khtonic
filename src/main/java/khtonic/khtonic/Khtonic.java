@@ -71,11 +71,11 @@ public class Khtonic {
         LOGGER.info("HELLO FROM COMMON SETUP");
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
 
-
-
         event.enqueueWork(()->{
-            ModMessages.register();
+
         });
+
+        ModMessages.register();
 
 
     }
@@ -98,10 +98,6 @@ public class Khtonic {
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
 
-        @SubscribeEvent
-        public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
-            event.registerAboveAll("insight", InsightHudElement.INSIGHT_HUD);
-        }
     }
 
 

@@ -1,6 +1,7 @@
 package khtonic.khtonic.event;
 
 import khtonic.khtonic.Khtonic;
+import khtonic.khtonic.client.InsightHudElement;
 import khtonic.khtonic.init.ItemInit;
 import khtonic.khtonic.insight.Insight;
 import khtonic.khtonic.insight.InsightProvider;
@@ -12,6 +13,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -32,16 +34,11 @@ public class ClientEvent {
         }
     }
 
-    @Mod.EventBusSubscriber(modid = Khtonic.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber(modid = Khtonic.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ClientModBusEvents {
         @SubscribeEvent
-        public static void onKeyRegister(RegisterKeyMappingsEvent event) {
-            event.register(KeyBinding.DRINKING_KEY);
-        }
-
-        @SubscribeEvent
         public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
-            event.registerAboveAll("thirst", ThirstHudOverlay.HUD_THIRST);
+            event.registerAboveAll("insight", InsightHudElement.INSIGHT_HUD);
         }
     }
 

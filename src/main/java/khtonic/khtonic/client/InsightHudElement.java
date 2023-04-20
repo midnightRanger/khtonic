@@ -6,6 +6,7 @@ import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
+import net.minecraftforge.client.model.obj.ObjLoader;
 
 public class InsightHudElement {
     private static final ResourceLocation INSIGHT = new ResourceLocation(Khtonic.MODID,

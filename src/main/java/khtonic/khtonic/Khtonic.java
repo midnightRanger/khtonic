@@ -2,6 +2,7 @@ package khtonic.khtonic;
 
 import com.mojang.logging.LogUtils;
 import khtonic.khtonic.client.InsightHudElement;
+import khtonic.khtonic.init.EntityInit;
 import khtonic.khtonic.init.ItemInit;
 import khtonic.khtonic.networking.ModMessages;
 import net.minecraft.client.Minecraft;
@@ -15,6 +16,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
+import net.minecraftforge.client.model.obj.ObjLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -38,7 +40,6 @@ public class Khtonic {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "khtonic";
 
-
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     // Create a Deferred Register to hold Blocks which will all be registered under the "khtonic" namespace
@@ -53,7 +54,6 @@ public class Khtonic {
 
     public Khtonic() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -61,7 +61,8 @@ public class Khtonic {
         BLOCKS.register(modEventBus);
         // Register the Deferred Register to the mod event bus so items get registered
         ItemInit.ITEMS.register(modEventBus);
-
+        EntityInit.ENTITY_DEFERRED.register(modEventBus);
+        EntityInit.ITEM_DEFERRED.register(modEventBus);
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -86,7 +87,6 @@ public class Khtonic {
         // Do something when the server starts
         LOGGER.info("HELLO from server starting");
     }
-
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
@@ -96,6 +96,7 @@ public class Khtonic {
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+
         }
 
     }

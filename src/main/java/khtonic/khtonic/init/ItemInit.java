@@ -1,6 +1,7 @@
 package khtonic.khtonic.init;
 
 import khtonic.khtonic.Khtonic;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -14,6 +15,8 @@ public class ItemInit {
 
     public static final RegistryObject<Item> NECRONOMICON = ITEMS.register("necronomicon",
             () -> new Item(new Item.Properties().tab(ModCreativeTab.instance)));
+    public static final RegistryObject<Item> MOON_CREATURE_HEAD = ITEMS.register("moon_creature_head",
+            ()-> new Item(new Item.Properties().tab(ModCreativeTab.instance)));
 
     public static class ModCreativeTab extends CreativeModeTab {
         private ModCreativeTab(int index, String label) {

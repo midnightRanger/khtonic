@@ -41,7 +41,6 @@ public class CosmicCreatureEntity extends Animal {
         return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 8.0D).add(Attributes.MOVEMENT_SPEED, 0.16D);
     }
 
-
     @Override
     public void aiStep() {
         super.aiStep();

@@ -1,5 +1,6 @@
 package khtonic.khtonic.event;
 
+import khtonic.khtonic.Entity.client.SoulEaterRenderer;
 import khtonic.khtonic.Khtonic;
 import khtonic.khtonic.client.InsightHudElement;
 import khtonic.khtonic.client.Models.CosmicCreatureModel;
@@ -11,6 +12,7 @@ import khtonic.khtonic.insight.InsightProvider;
 import khtonic.khtonic.networking.ModMessages;
 import khtonic.khtonic.networking.packet.InsightS2CPacket;
 import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
@@ -50,6 +52,7 @@ public class ClientEvent {
         @SubscribeEvent
         public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event) {
             event.registerEntityRenderer(EntityInit.COSMIC_CREATURE.get(), CosmicCreatureRenderer::new);
+            event.registerEntityRenderer(EntityInit.SOUL_EATER.get(), SoulEaterRenderer::new);
         }
 
         @SubscribeEvent

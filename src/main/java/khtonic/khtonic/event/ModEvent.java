@@ -1,6 +1,8 @@
 package khtonic.khtonic.event;
 
+import khtonic.khtonic.Entity.monsters.SoulEaterEntity;
 import khtonic.khtonic.Khtonic;
+import khtonic.khtonic.init.EntityInit;
 import khtonic.khtonic.insight.Insight;
 import khtonic.khtonic.insight.InsightProvider;
 import khtonic.khtonic.networking.ModMessages;
@@ -11,6 +13,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -52,5 +55,10 @@ public class ModEvent {
                 });
             }
         }
+    }
+
+    @SubscribeEvent
+    public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
+        event.put(EntityInit.SOUL_EATER.get(), SoulEaterEntity.setAttributes());
     }
 }

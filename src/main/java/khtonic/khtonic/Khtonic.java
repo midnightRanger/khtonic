@@ -1,11 +1,13 @@
 package khtonic.khtonic;
 
 import com.mojang.logging.LogUtils;
+import khtonic.khtonic.Entity.client.SoulEaterRenderer;
 import khtonic.khtonic.client.InsightHudElement;
 import khtonic.khtonic.init.EntityInit;
 import khtonic.khtonic.init.ItemInit;
 import khtonic.khtonic.networking.ModMessages;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -100,10 +102,6 @@ public class Khtonic {
             // Some client setup code
             LOGGER.info("HELLO FROM CLIENT SETUP");
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-
         }
-
     }
-
-
 }

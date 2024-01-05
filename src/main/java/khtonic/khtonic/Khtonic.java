@@ -32,6 +32,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
+import software.bernie.geckolib3.GeckoLib;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Khtonic.MODID)
@@ -63,6 +64,9 @@ public class Khtonic {
         ItemInit.ITEMS.register(modEventBus);
         EntityInit.ENTITY_DEFERRED.register(modEventBus);
         EntityInit.ITEM_DEFERRED.register(modEventBus);
+
+        GeckoLib.initialize();
+
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }

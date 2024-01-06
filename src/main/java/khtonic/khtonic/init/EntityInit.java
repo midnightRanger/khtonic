@@ -30,7 +30,6 @@ public class EntityInit {
     public static final DeferredRegister<Item> ITEM_DEFERRED = DeferredRegister.create(ForgeRegistries.ITEMS, Khtonic.MODID);
     public static final Collection<RegistryObject<Item>> SPAWN_EGGS = new ArrayList<>();
     public static final RegistryObject<EntityType<CosmicCreatureEntity>> COSMIC_CREATURE = registerCreature("cosmic_creature", () -> CosmicCreatureEntity::new, 0.4F, 0.95F, 0x000000, 0xFFFFFF);
-
     public static final RegistryObject<EntityType<SoulEaterEntity>> SOUL_EATER = registerMonster("soul_eater", () -> SoulEaterEntity::new, 0.4F, 0.95F, 0x000000, 0xFFFFFF);
 
     private static <T extends Animal> RegistryObject<EntityType<T>> registerCreature(String name, Supplier<EntityType.EntityFactory<T>> factory, float width, float height, int eggPrimary, int eggSecondary) {
@@ -50,10 +49,11 @@ public class EntityInit {
         SPAWN_EGGS.add(spawnEgg);
         return entityType;
     }
+
+    //TODO Перенести в ModEventBus
     @SubscribeEvent
     public static void addEntityAttributes(EntityAttributeCreationEvent event) {
         event.put(COSMIC_CREATURE.get(), CosmicCreatureEntity.createAttributes().build());
-        event.put(SOUL_EATER.get(), SoulEaterEntity.createMobAttributes().build());
     }
 
 

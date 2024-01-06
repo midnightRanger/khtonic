@@ -57,8 +57,4 @@ public class ModEvent {
         }
     }
 
-    @SubscribeEvent
-    public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
-        event.put(EntityInit.SOUL_EATER.get(), SoulEaterEntity.setAttributes());
-    }
 }

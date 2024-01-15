@@ -1,20 +1,15 @@
 package khtonic.khtonic.client.Models;
 
 import com.google.common.collect.ImmutableList;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import khtonic.khtonic.Entity.CosmicCreatureEntity;
 import net.minecraft.client.model.AgeableListModel;
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
-import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -47,12 +42,25 @@ public class CosmicCreatureModel<T extends CosmicCreatureEntity> extends Ageable
         MeshDefinition modelDefinition = new MeshDefinition();
         PartDefinition def = modelDefinition.getRoot();
         //p_171486 - y (down)
-        //p_171385 - z (right)
+        //p_171485 - z (right)
         //p_171487 - wider
         //p_171484 - dist from parent
-        def.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-2.0F, -4.0F, -2.0F, 10, 10, 10), PartPose.offset(0.0F, 12.0F, 0.0F));
-        def.addOrReplaceChild("mouth", CubeListBuilder.create().texOffs(18, 0).addBox(-0.5F, -3.0F, -4.0F, 4, 4, 5), PartPose.offset(0.0F, 12.0F, 0.0F));
-        def.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 9).addBox(-2.5F, 0.0F, -2.0F, 5, 11, 5), PartPose.offset(0.0F, 12.0F, 1.0F));
+
+        //p_171515 -
+        //p_171516 -
+
+        //p_171421 - offset
+        //p_171422 - up
+
+        def.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).
+                addBox(-2.0F, -4.0F, -2.0F, 5, 7, 5),
+                PartPose.offset(0.0F, 12.0F, 0.0F));
+        def.addOrReplaceChild("mouth", CubeListBuilder.create().texOffs(18, 0).
+                addBox(-0.5F, -3.0F, -4.0F, 2, 2, 5),
+                PartPose.offset(0.0F, 12.0F, 0.0F));
+        def.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).
+                addBox(-2.5F, 0.0F, -2.0F, 10, 7, 20),
+                PartPose.offset(0.0F, 0.0F, 0.0F));
         def.addOrReplaceChild("flipper_left", CubeListBuilder.create().texOffs(20, 10).mirror().addBox(0.0F, 0.0F, -1.0F, 1, 7, 3), PartPose.offsetAndRotation(2.5F, 12.0F, 0.0F, 0.0F, 0.0F, -0.08726646259971647F));
         def.addOrReplaceChild("flipper_right", CubeListBuilder.create().texOffs(20, 10).addBox(-1.0F, 0.0F, -1.0F, 1, 7, 3), PartPose.offsetAndRotation(-2.5F, 12.0F, 0.0F, 0.0F, 0.0F, 0.08726646259971647F));
         def.addOrReplaceChild("feet_left", CubeListBuilder.create().texOffs(0, 25).mirror().addBox(0.0F, 0.0F, -3.0F, 2, 1, 3), PartPose.offsetAndRotation(1.0F, 23.0F, 0.0F, 0.0F, -0.2617993877991494F, 0.0F));

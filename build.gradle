@@ -11,6 +11,7 @@ java {
     toolchain.languageVersion = JavaLanguageVersion.of(17)
 }
 
+
 minecraft {
     // The mappings can be changed at any time and must be in the following format.
     // Channel:   Version:
@@ -51,6 +52,9 @@ minecraft {
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'khtonic'
 
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
             mods {
                 khtonic {
                     source sourceSets.main
@@ -66,6 +70,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             property 'forge.enabledGameTestNamespaces', 'khtonic'
+
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
 
             mods {
                 khtonic {
@@ -86,6 +94,10 @@ minecraft {
 
             property 'forge.enabledGameTestNamespaces', 'khtonic'
 
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
+
             mods {
                 khtonic {
                     source sourceSets.main
@@ -99,6 +111,10 @@ minecraft {
             property 'forge.logging.markers', 'REGISTRIES'
 
             property 'forge.logging.console.level', 'debug'
+
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             args '--mod', 'khtonic', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
@@ -128,6 +144,12 @@ repositories {
         name = 'GeckoLib'
         url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
     }
+
+    maven {
+        name = 'Patchouli'
+        url 'https://maven.blamejared.com'
+    }
+
 }
 
 dependencies {
@@ -137,6 +159,9 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.19.2-43.2.4'
 
     implementation fg.deobf('software.bernie.geckolib:geckolib-forge-1.19:3.1.40')
+
+    compileOnly fg.deobf("vazkii.patchouli:Patchouli:1.19-75:api")
+    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:1.19-75")
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
